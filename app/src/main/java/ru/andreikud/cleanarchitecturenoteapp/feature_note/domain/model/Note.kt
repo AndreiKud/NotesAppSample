@@ -13,8 +13,14 @@ data class Note(
     @PrimaryKey val id: Int? = null
 ) {
     companion object {
-        val noteColors = listOf(RedOrange, LightGreen, Violet, BabyBlue, RedPink)
+        val noteColors = listOf(
+            NotesBackgroundColors.RedOrange,
+            NotesBackgroundColors.LightGreen,
+            NotesBackgroundColors.Violet,
+            NotesBackgroundColors.BabyBlue,
+            NotesBackgroundColors.RedPink
+        )
     }
 }
 
-class InvalidNoteException(message: String): Exception(message)
+class InvalidNoteException(message: String) : Exception(message)
