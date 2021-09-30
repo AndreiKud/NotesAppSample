@@ -15,10 +15,12 @@ object LightThemeColors {
 }
 
 // Notes background colors.
-object NotesBackgroundColors {
-    val RedOrange = Color(0xffffab91)
-    val RedPink = Color(0xfff48fb1)
-    val BabyBlue = Color(0xff81deea)
-    val Violet = Color(0xffcf94da)
-    val LightGreen = Color(0xffe7ed9b)
+enum class NotesBackgroundColors(colorHex: Long) {
+    RED_ORANGE(0xffffab91),
+    RED_PINK(0xfff48fb1),
+    BABY_BLUE(0xff81deea),
+    VIOLET(0xffcf94da),
+    LIGHT_GREEN(0xffe7ed9b);
+
+    val color = Color(colorHex)
 }
