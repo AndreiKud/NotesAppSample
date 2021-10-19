@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
@@ -20,6 +21,7 @@ import ru.andreikud.cleanarchitecturenoteapp.feature_note.presentation.notes.com
 import ru.andreikud.cleanarchitecturenoteapp.feature_note.presentation.notes.components.OrderSection
 import ru.andreikud.cleanarchitecturenoteapp.feature_note.presentation.util.Screen
 import kotlinx.coroutines.launch
+import ru.andreikud.cleanarchitecturenoteapp.util.Constants.ORDER_TEST_TAG
 
 @ExperimentalAnimationApi
 @Composable
@@ -77,7 +79,8 @@ fun NotesScreen(
                 OrderSection(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(vertical = 16.dp),
+                        .padding(vertical = 16.dp)
+                        .testTag(ORDER_TEST_TAG),
                     noteOrder = state.noteOrder,
                     onOrderChange = {
                         viewModel.onEvent(NotesEvent.Order(it))
