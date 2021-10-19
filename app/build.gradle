@@ -1,8 +1,8 @@
 plugins {
-    id 'com.android.application'
-    id 'kotlin-android'
-    id 'kotlin-kapt'
-    id 'dagger.hilt.android.plugin'
+    id "com.android.application"
+    id "kotlin-android"
+    id "kotlin-kapt"
+    id "dagger.hilt.android.plugin"
 }
 
 android {
@@ -15,7 +15,7 @@ android {
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "ru.andreikud.cleanarchitecturenoteapp.HiltTestRunner"
         vectorDrawables {
             useSupportLibrary true
         }
@@ -24,7 +24,7 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
         }
     }
     compileOptions {
@@ -32,80 +32,80 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = "1.8"
     }
     buildFeatures {
         compose true
     }
     composeOptions {
         kotlinCompilerExtensionVersion compose_version
-        kotlinCompilerVersion '1.5.21'
+        kotlinCompilerVersion "1.5.31"
     }
     packagingOptions {
         resources {
-            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
 }
 
 dependencies {
-    implementation 'androidx.core:core-ktx:1.6.0'
-    implementation 'androidx.appcompat:appcompat:1.3.1'
-    implementation 'com.google.android.material:material:1.4.0'
+    implementation "androidx.core:core-ktx:$core_version"
+    implementation "androidx.appcompat:appcompat:$appcompat_version"
+    implementation "com.google.android.material:material:$material_version"
     implementation "androidx.compose.ui:ui:$compose_version"
     implementation "androidx.compose.material:material:$compose_version"
     implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'
-    implementation 'androidx.activity:activity-compose:1.3.1'
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
+    implementation "androidx.activity:activity-compose:$activity_compose_version"
 
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
 
     // Compose dependencies.
-    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.4.0-rc01"
-    implementation "androidx.navigation:navigation-compose:2.4.0-alpha09"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_vm_version"
+    implementation "androidx.navigation:navigation-compose:$navigation_compose_vesrion"
     implementation "androidx.compose.material:material-icons-extended:$compose_version"
-    implementation "androidx.hilt:hilt-navigation-compose:1.0.0-alpha03"
+    implementation "androidx.hilt:hilt-navigation-compose:$hilt_navigation_compose_vesrion"
 
     // Coroutines.
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2-native-mt'
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_core_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_android"
 
-    // Dagger - Hilt.
-    implementation "com.google.dagger:hilt-android:2.38.1"
-    kapt "com.google.dagger:hilt-android-compiler:2.38.1"
-    implementation "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03"
-    kapt "androidx.hilt:hilt-compiler:1.0.0"
+    // Dagger-Hilt.
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hilt_lifecycle_viewmodel_version"
+    kapt "androidx.hilt:hilt-compiler:$hilt_compiler_version"
 
     // Room.
-    implementation "androidx.room:room-runtime:2.3.0"
-    kapt "androidx.room:room-compiler:2.3.0"
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
 
     // Kotlin Extensions and Coroutines support for Room.
-    implementation "androidx.room:room-ktx:2.3.0"
+    implementation "androidx.room:room-ktx:$room_version"
 
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_core_version"
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
 
     // Local unit tests.
     testImplementation "androidx.test:core:1.4.0"
     testImplementation "junit:junit:4.13.2"
     testImplementation "androidx.arch.core:core-testing:2.1.0"
-    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.1"
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.2-native-mt'
     testImplementation "com.google.truth:truth:1.1.3"
-    testImplementation "com.squareup.okhttp3:mockwebserver:4.9.1"
-    testImplementation "io.mockk:mockk:1.10.5"
-    debugImplementation "androidx.compose.ui:ui-test-manifest:1.1.0-alpha04"
+    testImplementation 'com.squareup.okhttp3:mockwebserver:5.0.0-alpha.2'
+    testImplementation 'io.mockk:mockk:1.12.0'
+    debugImplementation "androidx.compose.ui:ui-test-manifest:1.1.0-alpha06"
 
     // Instrumentation tests.
-    androidTestImplementation 'com.google.dagger:hilt-android-testing:2.37'
-    kaptAndroidTest 'com.google.dagger:hilt-android-compiler:2.38.1'
+    androidTestImplementation 'com.google.dagger:hilt-android-testing:2.39.1'
+    kaptAndroidTest 'com.google.dagger:hilt-android-compiler:2.39.1'
     androidTestImplementation "junit:junit:4.13.2"
-    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.1"
+    androidTestImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.2-native-mt'
     androidTestImplementation "androidx.arch.core:core-testing:2.1.0"
     androidTestImplementation "com.google.truth:truth:1.1.3"
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test:core-ktx:1.4.0'
-    androidTestImplementation "com.squareup.okhttp3:mockwebserver:4.9.1"
-    androidTestImplementation "io.mockk:mockk-android:1.10.5"
-    androidTestImplementation 'androidx.test:runner:1.4.0'
+    androidTestImplementation "androidx.test.ext:junit:1.1.3"
+    androidTestImplementation "androidx.test:core-ktx:1.4.0"
+    androidTestImplementation 'com.squareup.okhttp3:mockwebserver:5.0.0-alpha.2'
+    androidTestImplementation 'io.mockk:mockk-android:1.12.0'
+    androidTestImplementation "androidx.test:runner:1.4.0"
 }
